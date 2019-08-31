@@ -957,7 +957,7 @@ void CBasePlayerWeapon::ItemPostFrame()
 				m_iShotsFired = 15;
 			}
 
-			m_flDecreaseShotsFired = gpGlobals->time + 0.4f;
+			m_flDecreaseShotsFired = gpGlobals->time + 0.3f;
 		}
 
 		m_fFireOnEmpty = FALSE;
@@ -971,7 +971,7 @@ void CBasePlayerWeapon::ItemPostFrame()
 		{
 			if (m_iShotsFired > 0 && m_flDecreaseShotsFired < gpGlobals->time)
 			{
-				m_flDecreaseShotsFired = gpGlobals->time + 0.0225f;
+				m_flDecreaseShotsFired = gpGlobals->time + 0.005f;
 				m_iShotsFired--;
 			}
 		}
@@ -1232,6 +1232,20 @@ BOOL CBasePlayerWeapon::AddSecondaryAmmo(int iCount, char *szName, int iMax)
 	}
 
 	return iIdAmmo > 0 ? TRUE : FALSE;
+}
+
+void CBasePlayerWeapon::V_PunchAngles(float x, float y, float z)
+{
+	float scale = 1;
+
+	if (m_pPlayer->pev->flags & FL_DUCKING)
+	{
+		scale = 0.9;
+	}
+
+	m_pPlayer->pev->punchangle.x -= x * scale;
+	m_pPlayer->pev->punchangle.y -= y * scale;
+	m_pPlayer->pev->punchangle.z -= z * scale;
 }
 
 // IsUseable - this function determines whether or not a

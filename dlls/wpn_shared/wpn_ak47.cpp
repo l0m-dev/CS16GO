@@ -10,7 +10,7 @@ void CAK47::Spawn()
 	SET_MODEL(edict(), "models/w_ak47.mdl");
 
 	m_iDefaultAmmo = AK47_DEFAULT_GIVE;
-	m_flAccuracy = 0.1f;
+	m_flAccuracy = 0.07f;
 	m_iShotsFired = 0;
 
 	// Get ready to fall down
@@ -54,7 +54,7 @@ int CAK47::GetItemInfo(ItemInfo *p)
 
 BOOL CAK47::Deploy()
 {
-	m_flAccuracy = 0.1;
+	m_flAccuracy = 0.07;
 	m_iShotsFired = 0;
 	iShellOn = 1;
 
@@ -68,6 +68,9 @@ void CAK47::SecondaryAttack()
 
 void CAK47::PrimaryAttack()
 {
+	if (m_iShotsFired == 0)
+		m_flAccuracy = 0.07;
+
 	if (!(m_pPlayer->pev->flags & FL_ONGROUND))
 	{
 		AK47Fire(0.04 + (0.4 * m_flAccuracy), 0.0955, FALSE);
@@ -144,21 +147,103 @@ void CAK47::AK47Fire(float flSpread, float flCycleTime, BOOL fUseAutoAim)
 
 	m_flTimeWeaponIdle = UTIL_WeaponTimeBase() + 1.9f;
 
-	if (!(m_pPlayer->pev->flags & FL_ONGROUND))
+	float upForce = 1.2;
+
+	switch (m_iShotsFired)
 	{
-		KickBack(2.0, 1.0, 0.5, 0.35, 9.0, 6.0, 5);
-	}
-	else if (m_pPlayer->pev->flags & FL_DUCKING)
-	{
-		KickBack(0.9, 0.35, 0.15, 0.025, 5.5, 1.5, 9);
-	}
-	else if (m_pPlayer->pev->velocity.Length2D() > 0)
-	{
-		KickBack(1.5, 0.45, 0.225, 0.05, 6.5, 2.5, 7);
-	}
-	else
-	{
-		KickBack(1.0, 0.375, 0.175, 0.0375, 5.75, 1.75, 8);
+	case 0:
+		//V_PunchAngles(1);
+		break;
+	case 1:
+		V_PunchAngles(1);
+		break;
+	case 2:
+		V_PunchAngles(1.5);
+		break;
+	case 3:
+		V_PunchAngles(2);
+		break;
+	case 4:
+		V_PunchAngles(2);
+		break;
+	case 5:
+		V_PunchAngles(2);
+		break;
+	case 6:
+		V_PunchAngles(2);
+		break;
+	case 7:
+		V_PunchAngles(2);
+		break;
+	case 8:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 9:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 10:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 11:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 12:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 13:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 14:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 15:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 16:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 17:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 18:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 19:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 20:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 21:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 22:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 23:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 24:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 25:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 26:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 27:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 28:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 29:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 30:
+		V_PunchAngles(upForce, 1);
+		break;
 	}
 }
 
@@ -174,7 +259,7 @@ void CAK47::Reload()
 	{
 		m_pPlayer->SetAnimation(PLAYER_RELOAD);
 
-		m_flAccuracy = 0.1f;
+		m_flAccuracy = 0.07f;
 		m_iShotsFired = 0;
 		m_bDelayFire = false;
 	}

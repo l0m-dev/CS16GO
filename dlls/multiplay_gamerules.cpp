@@ -990,11 +990,14 @@ bool EXT_FUNC CHalfLifeMultiplay::NeededPlayersCheck()
 	// We needed players to start scoring
 	// Do we have them now?
 	// start the game, after the players entered in game
+	
 	if (!m_iNumSpawnableTerrorist || !m_iNumSpawnableCT)
 	{
-		UTIL_ClientPrintAll(HUD_PRINTCONSOLE, "#Game_scoring");
-		m_bNeededPlayers = true;
-		m_bGameStarted = false;
+		//UTIL_ClientPrintAll(HUD_PRINTCONSOLE, "#Game_scoring");
+		//m_bNeededPlayers = true;
+		//m_bGameStarted = false;
+
+		NeededPlayersCheck(1.0);
 	}
 
 	if (!m_bGameStarted && m_iNumSpawnableTerrorist != 0 && m_iNumSpawnableCT != 0)

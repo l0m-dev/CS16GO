@@ -15,7 +15,7 @@ void CGLOCK18::Spawn()
 
 	m_iGlock18ShotsFired = 0;
 	m_flGlock18Shoot = 0;
-	m_flAccuracy = 0.9f;
+	m_flAccuracy = 0.3f;
 
 	// Get ready to fall down
 	FallInit();
@@ -68,7 +68,7 @@ BOOL CGLOCK18::Deploy()
 	m_bBurstFire = false;
 	m_iGlock18ShotsFired = 0;
 	m_flGlock18Shoot = 0;
-	m_flAccuracy = 0.9f;
+	m_flAccuracy = 0.3f;
 	m_fMaxSpeed = GLOCK18_MAX_SPEED;
 
 	m_pPlayer->m_bShieldDrawn = false;
@@ -177,9 +177,9 @@ void CGLOCK18::GLOCK18Fire(float flSpread, float flCycleTime, BOOL bFireBurst)
 		{
 			m_flAccuracy = 0.9f;
 		}
-		else if (m_flAccuracy < 0.6f)
+		else if (m_flAccuracy < 0.3f)
 		{
-			m_flAccuracy = 0.6f;
+			m_flAccuracy = 0.3f;
 		}
 	}
 

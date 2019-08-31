@@ -378,6 +378,7 @@ public:
 public:
 	BOOL AddPrimaryAmmo(int iCount, char *szName, int iMaxClip, int iMaxCarry);
 	BOOL AddSecondaryAmmo(int iCount, char *szName, int iMaxCarry);
+	void V_PunchAngles(float x = 0, float y = 0, float z = 0);
 	BOOL DefaultDeploy(char *szViewModel, char *szWeaponModel, int iAnim, char *szAnimExt, int skiplocal = 0);
 	int DefaultReload(int iClipSize, int iAnim, float fDelay);
 	void FireRemaining(int &shotsFired, float &shootTime, BOOL isGlock18);

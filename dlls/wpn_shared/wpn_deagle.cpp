@@ -12,7 +12,7 @@ void CDEAGLE::Spawn()
 	m_iDefaultAmmo = DEAGLE_DEFAULT_GIVE;
 	m_iWeaponState &= ~WPNSTATE_SHIELD_DRAWN;
 	m_fMaxSpeed = DEAGLE_MAX_SPEED;
-	m_flAccuracy = 0.98f;
+	m_flAccuracy = 0.02f;
 
 	// Get ready to fall down
 	FallInit();
@@ -56,7 +56,7 @@ int CDEAGLE::GetItemInfo(ItemInfo *p)
 
 BOOL CDEAGLE::Deploy()
 {
-	m_flAccuracy = 0.98f;
+	m_flAccuracy = 0.02f;
 	m_fMaxSpeed = DEAGLE_MAX_SPEED;
 	m_iWeaponState &= ~WPNSTATE_SHIELD_DRAWN;
 	m_pPlayer->m_bShieldDrawn = false;
@@ -113,9 +113,9 @@ void CDEAGLE::DEAGLEFire(float flSpread, float flCycleTime, BOOL fUseSemi)
 		{
 			m_flAccuracy = 0.9f;
 		}
-		else if (m_flAccuracy < 0.6f)
+		else if (m_flAccuracy < 0.1f)
 		{
-			m_flAccuracy = 0.6f;
+			m_flAccuracy = 0.1f;
 		}
 	}
 
@@ -181,7 +181,7 @@ void CDEAGLE::Reload()
 	if (DefaultReload(iMaxClip(), DEAGLE_RELOAD, DEAGLE_RELOAD_TIME))
 	{
 		m_pPlayer->SetAnimation(PLAYER_RELOAD);
-		m_flAccuracy = 0.98f;
+		m_flAccuracy = 0.02f;
 	}
 }
 

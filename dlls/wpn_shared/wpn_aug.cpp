@@ -84,11 +84,11 @@ void CAUG::PrimaryAttack()
 	}
 	else if (m_pPlayer->pev->fov == DEFAULT_FOV)
 	{
-		AUGFire(0.02 * m_flAccuracy, 0.0825, FALSE);
+		AUGFire(0.02 * m_flAccuracy, 0.1, FALSE);
 	}
 	else
 	{
-		AUGFire(0.02 * m_flAccuracy, 0.135, FALSE);
+		AUGFire(0.015 * m_flAccuracy, 0.1, FALSE);
 	}
 }
 

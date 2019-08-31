@@ -181,21 +181,103 @@ void CM4A1::M4A1Fire(float flSpread, float flCycleTime, BOOL fUseAutoAim)
 
 	m_flTimeWeaponIdle = UTIL_WeaponTimeBase() + 1.5f;
 
-	if (!(m_pPlayer->pev->flags & FL_ONGROUND))
+	float upForce = 1.15;
+
+	switch (m_iShotsFired)
 	{
-		KickBack(1.2, 0.5, 0.23, 0.15, 5.5, 3.5, 6);
-	}
-	else if (m_pPlayer->pev->flags & FL_DUCKING)
-	{
-		KickBack(0.6, 0.3, 0.2, 0.0125, 3.25, 2.0, 7);
-	}
-	else if (m_pPlayer->pev->velocity.Length2D() > 0)
-	{
-		KickBack(1.0, 0.45, 0.28, 0.045, 3.75, 3.0, 7);
-	}
-	else
-	{
-		KickBack(0.65, 0.35, 0.25, 0.015, 3.5, 2.25, 7);
+	case 0:
+		//V_PunchAngles(1);
+		break;
+	case 1:
+		V_PunchAngles(0.9);
+		break;
+	case 2:
+		V_PunchAngles(1.4);
+		break;
+	case 3:
+		V_PunchAngles(1.9);
+		break;
+	case 4:
+		V_PunchAngles(1.9);
+		break;
+	case 5:
+		V_PunchAngles(1.9);
+		break;
+	case 6:
+		V_PunchAngles(1.9);
+		break;
+	case 7:
+		V_PunchAngles(1.9);
+		break;
+	case 8:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 9:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 10:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 11:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 12:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 13:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 14:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 15:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 16:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 17:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 18:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 19:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 20:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 21:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 22:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 23:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 24:
+		V_PunchAngles(upForce, -1);
+		break;
+	case 25:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 26:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 27:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 28:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 29:
+		V_PunchAngles(upForce, 1);
+		break;
+	case 30:
+		V_PunchAngles(upForce, 1);
+		break;
 	}
 }
 
